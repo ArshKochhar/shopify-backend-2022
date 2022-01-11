@@ -3,6 +3,7 @@ const express = require('express');
 const monk = require('monk');
 const Joi = require('@hapi/joi');
 
+
 const db = monk(process.env.MONGO_URI);
 const inventory = db.get('inventory');
 
@@ -13,6 +14,8 @@ const schema = Joi.object({
   quantity: Joi.string().trim().required(),
   url: Joi.string().uri()
 });
+
+
 
 const router = express.Router();
 
