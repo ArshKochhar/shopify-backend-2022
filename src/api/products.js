@@ -1,21 +1,11 @@
 /* eslint-disable consistent-return */
 const express = require('express');
 const monk = require('monk');
-const Joi = require('@hapi/joi');
 
+const schema = require('./model');
 
 const db = monk(process.env.MONGO_URI);
 const inventory = db.get('inventory');
-
-const schema = Joi.object({
-  name: Joi.string().trim().required(),
-  category: Joi.string().trim().required(),
-  price: Joi.string().trim().required(),
-  quantity: Joi.string().trim().required(),
-  url: Joi.string().uri()
-});
-
-
 
 const router = express.Router();
 
@@ -32,7 +22,12 @@ router.get('/', async (req, res, next) => {
 // Create a new product
 router.post('/', async (req, res, next) => {
   try {
-    console.log(req.body);
+    const item = await inventory.findOne({
+      name: req.body.name
+    });
+    if (item) {
+      return next(new Error('This item already exists'));
+    }
     const value = await schema.validateAsync(req.body);
     const insertDB = await inventory.insert(value);
     res.json(insertDB);
@@ -76,13 +71,21 @@ router.put('/:id', async (req, res, next) => {
 });
 
 // Delete 1 product
+// shouldnt delete a product whos id isnt found
 router.delete('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
-    await inventory.remove({ _id: id });
-    res.json({
-      message: 'Success',
+    const exists = await inventory.findOne({
+      _id: id,
     });
+    if (exists) {
+      await inventory.remove({ _id: id });
+      res.json({
+        message: 'Success',
+      });
+    } else {
+      return next(new Error('This item does not exist'));
+    }
   } catch (error) {
     next(error);
   }
