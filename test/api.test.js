@@ -64,8 +64,11 @@ describe('POST /api/v1/inventory/', () => {
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)
-      .end((err) => {
-        if (err) return done(err);
+      .end((err, res) => {
+        if (err) {
+          console.log(res.body);
+          return done(err);
+        }
         done();
       });
   });
@@ -181,7 +184,7 @@ describe('DELETE /api/v1/inventory/:id', () => {
 describe('DELETE /api/v1/inventory/:id', () => {
   it('respond with 200, Deletes existing item from the database', (done) => {
     request(app)
-      .delete('/api/v1/inventory/61e2664a3e982505a0fbdc64')
+      .delete('/api/v1/inventory/61e256f5d4ddc47393f3af85')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)

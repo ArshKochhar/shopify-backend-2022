@@ -19,6 +19,20 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+// Retreive 1 unique product, using `id`
+router.get('/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const item = await inventory.findOne({
+      _id: id,
+    });
+    if (!item) return next();
+    return res.json(item);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // Create a new product
 router.post('/', async (req, res, next) => {
   try {
@@ -31,20 +45,6 @@ router.post('/', async (req, res, next) => {
     const value = await schema.validateAsync(req.body);
     const insertDB = await inventory.insert(value);
     res.json(insertDB);
-  } catch (error) {
-    next(error);
-  }
-});
-
-// Retreive 1 unique product, using `id`
-router.get('/:id', async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const item = await inventory.findOne({
-      _id: id,
-    });
-    if (!item) return next();
-    return res.json(item);
   } catch (error) {
     next(error);
   }
