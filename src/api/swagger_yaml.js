@@ -14,6 +14,98 @@
  *             schema:
  *               type: object
  *               properties:
+ *                 _id:
+ *                   type: string
+ *                   description: _id of the product
+ *                   example: 61db3a028680f23058c00563
+ *                 name:
+ *                   type: string
+ *                   description: Name of the Product.
+ *                   example: T-shirt
+ *                 category:
+ *                   type: string
+ *                   description: Name of the Product.
+ *                   example: clothes
+ *                 price:
+ *                   type: string
+ *                   decription: Price of the Product.
+ *                   example: 33.99
+ *                 quantity:
+ *                   type: string
+ *                   description: Quantity of the Product
+ *                   example: 5
+ *                 url:
+ *                   type: string
+ *                   description: URL of the Product
+ *                   example: https://bigbudpress.com/collections/prints/products/pantry-button-up-spring-rapture
+ */
+
+// GET - retrieval of all items and export into a CSV
+/**
+ * @swagger
+ * paths:
+ *  /api/v1/inventory/export:
+ *   get:
+ *     summary: Retrieve a list Products in the inventory and exports to a CSV.
+ *     description: GET request to get all products from the inventory and exports to a CSV.
+ *     responses:
+ *       200:
+ *         description: A list of products in CSV.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                   description: _id of the product
+ *                   example: 61db3a028680f23058c00563
+ *                 name:
+ *                   type: string
+ *                   description: Name of the Product.
+ *                   example: T-shirt
+ *                 category:
+ *                   type: string
+ *                   description: Name of the Product.
+ *                   example: clothes
+ *                 price:
+ *                   type: string
+ *                   decription: Price of the Product.
+ *                   example: 33.99
+ *                 quantity:
+ *                   type: string
+ *                   description: Quantity of the Product
+ *                   example: 5
+ *                 url:
+ *                   type: string
+ *                   description: URL of the Product
+ *                   example: https://bigbudpress.com/collections/prints/products/pantry-button-up-spring-rapture
+ */
+
+// GET - retrieval of single item based on _id
+/**
+ * @swagger
+ * paths:
+ *  /api/v1/inventory/export/{_id}:
+ *   get:
+ *     summary: Retrieve a Single Product and export in a CSV.
+ *     description: GET request to retrieve a Single Product and export in a CSV.
+ *     parameters:
+ *       - in: path
+ *         name: _id
+ *         example: 61db39f58680f23058c00562
+ *         required: true
+ *         description: Numeric ID of the product to retreive
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: A single product.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
  *                 data:
  *                   type: array
  *                   items:
@@ -189,7 +281,7 @@
  *       - in: path
  *         name: _id
  *         required: true
- *         example: 61db39f58680f23058c00562
+ *         example: 61e0e053ce25bdb382a383e1
  *         description: Numeric ID of the product to delete
  *         schema:
  *           type: string

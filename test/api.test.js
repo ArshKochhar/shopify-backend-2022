@@ -47,12 +47,57 @@ describe('GET /api/v1/inventory/:id', () => {
       });
   });
 });
+// ________________________________________________________________
+// GET request to retreive and store collection in a CSV
+describe('GET /api/v1/inventory/export', () => {
+  it('responds with 200 an creates a CSV file with data', (done) => {
+    request(app)
+      .get('/api/v1/inventory/export')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end((err) => {
+        if (err) return done(err);
+        done();
+      });
+  });
+});
+
+// GET request to export a CSV of an item with an _ID that DOES NOT EXIST
+describe('GET /api/v1/inventory/export/:id', () => {
+  it('responds with `Not Found` error message', (done) => {
+    request(app)
+      .get('/api/v1/inventory/61db39f58680f23058c00588')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(404)
+      .end((err) => {
+        if (err) return done(err);
+        done();
+      });
+  });
+});
+
+// GET request to export a CSV of an item with an _ID that DOES EXIST
+describe('GET /api/v1/inventory/export/:id', () => {
+  it('responds with 200 an creates a CSV file with single item data', (done) => {
+    request(app)
+      .get('/api/v1/inventory/export/61db39f58680f23058c00562')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end((err) => {
+        if (err) return done(err);
+        done();
+      });
+  });
+});
 
 // ________________________________________________________________
 // POST request to add a NEW item to the inventory
 describe('POST /api/v1/inventory/', () => {
   const data = {
-    name: 'Magenta Denim Jacket', // Change name if you want to test again or you will receive a 500
+    name: 'Denim Scarf', // Change name if you want to test again or you will receive a 500
     category: 'clothes',
     price: '22',
     quantity: '5'
@@ -66,7 +111,7 @@ describe('POST /api/v1/inventory/', () => {
       .expect(200)
       .end((err, res) => {
         if (err) {
-          console.log(res.body);
+          console.log(res.body.message);
           return done(err);
         }
         done();
@@ -184,12 +229,15 @@ describe('DELETE /api/v1/inventory/:id', () => {
 describe('DELETE /api/v1/inventory/:id', () => {
   it('respond with 200, Deletes existing item from the database', (done) => {
     request(app)
-      .delete('/api/v1/inventory/61e256f5d4ddc47393f3af85')
+      .delete('/api/v1/inventory/61e0e053ce25bdb382a383e1')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)
-      .end((err) => {
-        if (err) return done(err);
+      .end((err, res) => {
+        if (err) {
+          console.log(res.body.message);
+          return done(err);
+        }
         done();
       });
   });
