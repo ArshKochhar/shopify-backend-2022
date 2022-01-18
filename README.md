@@ -26,20 +26,39 @@ Development utilities:
 npm install
 ```
 
-## Lint
-
-```
-npm run lint
-```
-
-## Test
-
-```
-npm run test
-```
-
 ## Development
 
 ```
 npm run dev
 ```
+
+# Getting Started
+
+Once you have cloned the repository, and ran the commands above - to recap:
+```
+npm install
+```
+```
+npm run dev
+```
+
+You should see the following in your console (the application will be running on PORT 5000):
+```
+Shopify Inventory -  CRUD API Listening
+```
+
+Now in order to test the API locally, I have created a UI for testing, which essentially provides the same functionality as `Postman`. This libarary is called `Swagger UI`. This libary allows for ease in testing the API, and documents all the endpoints quite well.
+
+In order to access this, paste the following URL in your browser of choice: 
+```
+http://localhost:5000/swagger/
+```
+<img width="1786" alt="Screen Shot 2022-01-18 at 10 41 00 AM" src="https://user-images.githubusercontent.com/51424592/149969250-dd5377a5-c37d-48b2-913a-2fe0cfdce3a9.png">
+
+As seen in the image above, you can see all the different endpoints that are built for the CRUD operations and the additional feature.
+
+
+
+
+
+
