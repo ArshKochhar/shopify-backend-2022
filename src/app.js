@@ -23,7 +23,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: 'https://shopify-crud-backend-2022.herokuapp.com/api/v1/inventory',
+      url: 'https://shopify-crud-backend-2022.herokuapp.com',
       description: 'Development server',
     },
   ],
