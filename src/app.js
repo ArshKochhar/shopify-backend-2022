@@ -51,7 +51,7 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.json({
-    message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄'
+    message: 'Please paste this URL to access the API docs built using Swagger UI - https://shopify-crud-backend-2022.herokuapp.com/swagger/ '
   });
 });
 
