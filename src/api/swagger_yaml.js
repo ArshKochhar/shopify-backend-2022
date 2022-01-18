@@ -238,7 +238,7 @@
  *       - in: path
  *         name: _id
  *         required: true
- *         example: 61db962e268dbe6b109b0fe7
+ *         example: 61e0e28abbb115070a7408b6
  *         description: Numeric ID of the product to update
  *         schema:
  *           type: string
