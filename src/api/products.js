@@ -30,12 +30,7 @@ router.get('/export', async (req, res, next) => {
     res.setHeader('Content-disposition', 'attachment; filename=inventory_all.csv');
     res.set('Content-Type', 'text/csv');
     res.status(200).end(csvData);
-    // fs.writeFile('inventory_mongodb_fs.csv', csvData, (error) => {
-    //   if (error) throw error;
-    //   console.log('Write to inventory_mongodb_fs.csv successfully!');
-
-    // });
-    // res.json(prods);
+    res.json(prods);
   } catch (error) {
     next(error);
   }
@@ -51,11 +46,10 @@ router.get('/export/:id', async (req, res, next) => {
     if (!item) return next();
     const json2csvParser = new Json2csvParser({ header: true });
     const csvData = json2csvParser.parse(item);
-    fs.writeFile('inventory_singleItem_fs.csv', csvData, (error) => {
-      if (error) throw error;
-      console.log('Write to inventory_singleItem_fs.csv successfully!');
-      return res.json(item);
-    });
+    res.setHeader('Content-disposition', 'attachment; filename=inventory_all.csv');
+    res.set('Content-Type', 'text/csv');
+    res.status(200).end(csvData);
+    return res.json(item);
   } catch (error) {
     next(error);
   }
