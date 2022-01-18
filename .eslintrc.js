@@ -11,3 +11,4 @@ module.exports = {
         camelcase: 0,
     }
 };
+

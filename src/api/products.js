@@ -3,9 +3,7 @@ const express = require('express');
 const monk = require('monk');
 const Json2csvParser = require('json2csv').Parser;
 const fs = require('fs');
-const path = require('path');
 
-const fields = ['name', 'category', 'price', 'quantity', 'url'];
 const schema = require('./model');
 
 const db = monk(process.env.MONGO_URI);
@@ -23,17 +21,21 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// GET request to export CSV file of the collection 
+// GET request to export CSV file of the collection
 router.get('/export', async (req, res, next) => {
   try {
     const prods = await inventory.find({});
     const json2csvParser = new Json2csvParser({ header: true });
     const csvData = json2csvParser.parse(prods);
-    fs.writeFile('inventory_mongodb_fs.csv', csvData, (error) => {
-      if (error) throw error;
-      console.log('Write to inventory_mongodb_fs.csv successfully!');
-      res.json(prods);
-    });
+    res.setHeader('Content-disposition', 'attachment; filename=inventory_all.csv');
+    res.set('Content-Type', 'text/csv');
+    res.status(200).end(csvData);
+    // fs.writeFile('inventory_mongodb_fs.csv', csvData, (error) => {
+    //   if (error) throw error;
+    //   console.log('Write to inventory_mongodb_fs.csv successfully!');
+
+    // });
+    // res.json(prods);
   } catch (error) {
     next(error);
   }

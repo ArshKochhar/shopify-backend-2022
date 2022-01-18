@@ -50,7 +50,7 @@ describe('GET /api/v1/inventory/:id', () => {
 // ________________________________________________________________
 // GET request to retreive and store collection in a CSV
 describe('GET /api/v1/inventory/export', () => {
-  it('responds with 200 an creates a CSV file with data', (done) => {
+  it('responds with 200 and creates a CSV file with data', (done) => {
     request(app)
       .get('/api/v1/inventory/export')
       .set('Accept', 'application/json')
