@@ -1,37 +1,3 @@
-# Express API Starter
-
-Includes API Server utilities:
-
-* [morgan](https://www.npmjs.com/package/morgan)
-  * HTTP request logger middleware for node.js
-* [helmet](https://www.npmjs.com/package/helmet)
-  * Helmet helps you secure your Express apps by setting various HTTP headers. It's not a silver bullet, but it can help!
-* [dotenv](https://www.npmjs.com/package/dotenv)
-  * Dotenv is a zero-dependency module that loads environment variables from a `.env` file into `process.env`
-
-Development utilities:
-
-* [nodemon](https://www.npmjs.com/package/nodemon)
-  * nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
-* [eslint](https://www.npmjs.com/package/eslint)
-  * ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
-* [mocha](https://www.npmjs.com/package/mocha)
-  * ☕️ Simple, flexible, fun JavaScript test framework for Node.js & The Browser ☕️
-* [supertest](https://www.npmjs.com/package/supertest)
-  * HTTP assertions made easy via superagent.
-
-## Setup
-
-```
-npm install
-```
-
-## Development
-
-```
-npm run dev
-```
-
 # Production API - Hosted on Heroku
 
 Please follow the URL below to view the API in action in production on Heroku:
@@ -45,12 +11,18 @@ https://drive.google.com/file/d/1ZtVCKA6JFei4KV_RJo6b4KQNLTlSq_tC/view?usp=shari
 ```
 
 
-# Getting Started
+# Getting Started - Locally
 
 Once you have cloned the repository, and ran the commands above - to recap:
 ```
 npm install
 ```
+
+Before you start the API, please make sure to do the following, follow the instruction to uncomment the code on `line 29` from `/inventory-shopify/test/api.test.js` file: 
+
+<img width="651" alt="Screen Shot 2022-01-18 at 3 32 38 PM" src="https://user-images.githubusercontent.com/51424592/150014114-606bf606-1bda-4b62-96e4-7c81e789bad1.png">
+
+Now run the following command:
 ```
 npm run dev
 ```
@@ -60,7 +32,7 @@ You should see the following in your console (the application will be running on
 Shopify Inventory -  CRUD API Listening
 ```
 
-Now in order to test the API locally, I have created a UI for testing, which essentially provides the same functionality as `Postman`. This libarary is called `Swagger UI`. This libary allows for ease in testing the API, and documents all the endpoints quite well.
+Now in order to test the API locally, I have created a UI for testing, which essentially provides the same functionality as `Postman`. This library is called `Swagger UI`. This library allows for ease in testing the API, and documents all the endpoints quite well.
 
 In order to access this, paste the following URL in your browser of choice: 
 ```
@@ -68,7 +40,7 @@ http://localhost:5000/swagger/
 ```
 <img width="1786" alt="Screen Shot 2022-01-18 at 10 41 00 AM" src="https://user-images.githubusercontent.com/51424592/149969250-dd5377a5-c37d-48b2-913a-2fe0cfdce3a9.png">
 
-As seen in the image above, you can see all the different endpoints that are built for the CRUD operations and the additional feature.
+As seen in the image above, you can see all the different endpoints that are built for the CRUD operations and the additional feature (EXPORT CSV).
 
 After arriving at this page, upon clicking each endpoint, you will see a sample `Response Body` & expected `status code`. To test out each of these endpoints, you will be required to `click on the endpoint`, click on `try it now` and then `Execute`. 
 
@@ -86,6 +58,9 @@ Upon a successful request, you will receive an option to download the `CSV` as f
 
 
 # Running Tests
+
+The tests can be found in `/inventory-shopify/test/api.test.js`
+- In order to run these tests you must run the command `npm run test`.
 
 I have written out test cases for each of these endpoints, where it would `fail` , and where it would `pass`. Please note that the first time that you run these test cases all of them will pass, however the second time, 2 will not. This is because the `POST` and `DELETE` request have already been succesfull the first time around. 
 
@@ -110,8 +85,25 @@ I have provided extra sample data and _id's for these two requests to succeed if
 61e64c1e56a84879f3847f98
 ```
 
-The tests can be found in `/inventory-shopify/test/api.test.js`
-- In order to run these tests you must run the command `npm run test`
+## Includes API Server utilities:
+
+* [morgan](https://www.npmjs.com/package/morgan)
+  * HTTP request logger middleware for node.js
+* [helmet](https://www.npmjs.com/package/helmet)
+  * Helmet helps you secure your Express apps by setting various HTTP headers. It's not a silver bullet, but it can help!
+* [dotenv](https://www.npmjs.com/package/dotenv)
+  * Dotenv is a zero-dependency module that loads environment variables from a `.env` file into `process.env`
+
+Development utilities:
+
+* [nodemon](https://www.npmjs.com/package/nodemon)
+  * nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
+* [eslint](https://www.npmjs.com/package/eslint)
+  * ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
+* [mocha](https://www.npmjs.com/package/mocha)
+  * ☕️ Simple, flexible, fun JavaScript test framework for Node.js & The Browser ☕️
+* [supertest](https://www.npmjs.com/package/supertest)
+  * HTTP assertions made easy via superagent.
 
 
 
