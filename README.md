@@ -40,6 +40,10 @@ https://shopify-crud-backend-2022.herokuapp.com/swagger/
 ```
 Here is a video that runs through the demo of the application on the Production Link.
 
+```
+https://drive.google.com/file/d/1ZtVCKA6JFei4KV_RJo6b4KQNLTlSq_tC/view?usp=sharing
+```
+
 
 # Getting Started
 
