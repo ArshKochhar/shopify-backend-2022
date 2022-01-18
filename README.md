@@ -1,6 +1,91 @@
-# Express API Starter
+# Production API - Hosted on Heroku
 
-Includes API Server utilities:
+Please follow the URL below to view the API in action in production on Heroku:
+```
+https://shopify-crud-backend-2022.herokuapp.com/swagger/
+```
+Here is a video that runs through the demo of the application on the Production Link.
+
+```
+https://drive.google.com/file/d/1ZtVCKA6JFei4KV_RJo6b4KQNLTlSq_tC/view?usp=sharing
+```
+
+
+# Getting Started - Locally
+
+Once you have cloned the repository, and ran the commands above - to recap:
+```
+npm install
+```
+
+Before you start the API, please make sure to do the following, follow the instruction to uncomment the code on `line 29` from `/inventory-shopify/test/api.test.js` file: 
+
+<img width="651" alt="Screen Shot 2022-01-18 at 3 32 38 PM" src="https://user-images.githubusercontent.com/51424592/150014114-606bf606-1bda-4b62-96e4-7c81e789bad1.png">
+
+Now run the following command:
+```
+npm run dev
+```
+
+You should see the following in your console (the application will be running on PORT 5000):
+```
+Shopify Inventory -  CRUD API Listening
+```
+
+Now in order to test the API locally, I have created a UI for testing, which essentially provides the same functionality as `Postman`. This library is called `Swagger UI`. This library allows for ease in testing the API, and documents all the endpoints quite well.
+
+In order to access this, paste the following URL in your browser of choice: 
+```
+http://localhost:5000/swagger/
+```
+<img width="1786" alt="Screen Shot 2022-01-18 at 10 41 00 AM" src="https://user-images.githubusercontent.com/51424592/149969250-dd5377a5-c37d-48b2-913a-2fe0cfdce3a9.png">
+
+As seen in the image above, you can see all the different endpoints that are built for the CRUD operations and the additional feature (EXPORT CSV).
+
+After arriving at this page, upon clicking each endpoint, you will see a sample `Response Body` & expected `status code`. To test out each of these endpoints, you will be required to `click on the endpoint`, click on `try it now` and then `Execute`. 
+
+Please note that some of the requests require a `body` or `query parameters` or both. You will be prompted for either of these requirements to complete the request.
+
+# Additonal Feature on Local Server
+
+The additional feature that I have implemented is the `Export inventory data in CSV by clicking a button`. Upon clicking the `Try it now`, for the following two endpoints:
+
+<img width="1451" alt="Screen Shot 2022-01-18 at 11 28 59 AM" src="https://user-images.githubusercontent.com/51424592/150003649-5dc4c65e-9d61-45a4-bf0f-750e9b2eb32f.png">
+
+Upon a successful request, you will receive an option to download the `CSV` as follows (bottom right of the image below):
+
+<img width="1397" alt="Screen Shot 2022-01-18 at 2 17 25 PM" src="https://user-images.githubusercontent.com/51424592/150003866-2e322278-30c5-49b9-8b7d-b6a42fee7f9d.png">
+
+
+# Running Tests
+
+The tests can be found in `/inventory-shopify/test/api.test.js`
+- In order to run these tests you must run the command `npm run test`.
+
+I have written out test cases for each of these endpoints, where it would `fail` , and where it would `pass`. Please note that the first time that you run these test cases all of them will pass, however the second time, 2 will not. This is because the `POST` and `DELETE` request have already been succesfull the first time around. 
+
+- For the `POST` request, this means that an object with the same fields has already been created and the database cannot contain duplicates
+- For the `DELETE` request, this means that an object with the given `_id` has already been deleted, and so an item that doesn't exist in the database cannot be deleted
+
+I have provided extra sample data and _id's for these two requests to succeed if you wish to run the test's again. (if you wish to run multiple tests, the fields can be changed from this data)
+
+`Data for POST request`
+```
+{
+  "name": "Canada Goose Jacket",
+  "category": "clothes",
+  "price": "1000.99",
+  "quantity": "5",
+  "url": "https://www.canadagoose.com/ca/en/macmillan-parka-801688475735.html"
+}
+```
+`_id for DELETE request`
+```
+61e3a3053cfb29aaa73e7eab
+61e64c1e56a84879f3847f98
+```
+
+## Includes API Server utilities:
 
 * [morgan](https://www.npmjs.com/package/morgan)
   * HTTP request logger middleware for node.js
@@ -20,26 +105,10 @@ Development utilities:
 * [supertest](https://www.npmjs.com/package/supertest)
   * HTTP assertions made easy via superagent.
 
-## Setup
 
-```
-npm install
-```
 
-## Lint
 
-```
-npm run lint
-```
 
-## Test
 
-```
-npm run test
-```
 
-## Development
 
-```
-npm run dev
-```
