@@ -46,7 +46,7 @@ router.get('/export/:id', async (req, res, next) => {
     if (!item) return next();
     const json2csvParser = new Json2csvParser({ header: true });
     const csvData = json2csvParser.parse(item);
-    res.setHeader('Content-disposition', 'attachment; filename=inventory_all.csv');
+    res.setHeader('Content-disposition', 'attachment; filename=inventory_single.csv');
     res.set('Content-Type', 'text/csv');
     res.status(200).end(csvData);
     return res.json(item);
