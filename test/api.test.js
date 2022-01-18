@@ -50,11 +50,10 @@ describe('GET /api/v1/inventory/:id', () => {
 // ________________________________________________________________
 // GET request to retreive and store collection in a CSV
 describe('GET /api/v1/inventory/export', () => {
-  it('responds with 200 and creates a CSV file with data', (done) => {
+  it('responds with 200 an creates a CSV file with data', (done) => {
     request(app)
       .get('/api/v1/inventory/export')
       .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
       .expect(200)
       .end((err) => {
         if (err) return done(err);
@@ -84,7 +83,6 @@ describe('GET /api/v1/inventory/export/:id', () => {
     request(app)
       .get('/api/v1/inventory/export/61db39f58680f23058c00562')
       .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
       .expect(200)
       .end((err) => {
         if (err) return done(err);
@@ -97,9 +95,9 @@ describe('GET /api/v1/inventory/export/:id', () => {
 // POST request to add a NEW item to the inventory
 describe('POST /api/v1/inventory/', () => {
   const data = {
-    name: 'Denim Scarf', // Change name if you want to test again or you will receive a 500
+    name: 'Canada Goose Parka', // Change name if you want to test again or you will receive a 500
     category: 'clothes',
-    price: '22',
+    price: '900',
     quantity: '5'
   };
   it('respond with 200, new item created', (done) => {
@@ -167,14 +165,14 @@ describe('POST /api/v1/inventory/', () => {
 // PUT: Updating an item with a different property
 describe('PUT /api/v1/inventory/:id', () => {
   const data = {
-    name: 'Red Denim Jacket',
+    name: 'Off White T-Shirt',
     category: 'clothes',
-    price: '21',
-    quantity: '2'
+    price: '1234.44',
+    quantity: '3'
   };
   it('respond with 200, Updates the existing product in the database', (done) => {
     request(app)
-      .put('/api/v1/inventory/61e253826faf6e6eda533cd5')
+      .put('/api/v1/inventory/61e6db9a9d089b0004e8eae6')
       .send(data)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
@@ -229,7 +227,7 @@ describe('DELETE /api/v1/inventory/:id', () => {
 describe('DELETE /api/v1/inventory/:id', () => {
   it('respond with 200, Deletes existing item from the database', (done) => {
     request(app)
-      .delete('/api/v1/inventory/61e0e053ce25bdb382a383e1')
+      .delete('/api/v1/inventory/61e71a9738b392bacedcb87c')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)

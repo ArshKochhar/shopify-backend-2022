@@ -26,7 +26,7 @@ const swaggerDefinition = {
       url: 'https://shopify-crud-backend-2022.herokuapp.com',
       name: 'Production Server',
     },
-    // UNCOMMENT BELOW WHEN RUNNING LOCALLY.
+    // UNCOMMENT BELOW WHEN RUNNING LOCALLY, and comment above simultaneously.
     // {
     //   url: 'http://localhost:5000',
     //   name: 'LocalHost server',

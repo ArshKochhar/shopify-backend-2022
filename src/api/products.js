@@ -29,8 +29,8 @@ router.get('/export', async (req, res, next) => {
     const csvData = json2csvParser.parse(prods);
     res.setHeader('Content-disposition', 'attachment; filename=inventory_all.csv');
     res.set('Content-Type', 'text/csv');
-    res.status(200).end(csvData);
-    res.json(prods);
+    return res.status(200).end(csvData);
+    // res.json(prods);
   } catch (error) {
     next(error);
   }
@@ -48,8 +48,8 @@ router.get('/export/:id', async (req, res, next) => {
     const csvData = json2csvParser.parse(item);
     res.setHeader('Content-disposition', 'attachment; filename=inventory_single.csv');
     res.set('Content-Type', 'text/csv');
-    res.status(200).end(csvData);
-    return res.json(item);
+    return res.status(200).end(csvData);
+    // return res.json(item);
   } catch (error) {
     next(error);
   }
