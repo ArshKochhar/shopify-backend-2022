@@ -74,6 +74,11 @@ Please note that some of the requests require a `body` or `query parameters` or 
 
 The additional feature that I have implemented is the `Export inventory data in CSV by clicking a button`. Upon clicking the `Try it now`, for the following two endpoints:
 
+<img width="1451" alt="Screen Shot 2022-01-18 at 11 28 59 AM" src="https://user-images.githubusercontent.com/51424592/150003649-5dc4c65e-9d61-45a4-bf0f-750e9b2eb32f.png">
+
+Upon a successful request, you will receive an option to download the `CSV` as follows (bottom right of the image below):
+
+<img width="1397" alt="Screen Shot 2022-01-18 at 2 17 25 PM" src="https://user-images.githubusercontent.com/51424592/150003866-2e322278-30c5-49b9-8b7d-b6a42fee7f9d.png">
 
 
 # Running Tests
@@ -83,7 +88,23 @@ I have written out test cases for each of these endpoints, where it would `fail`
 - For the `POST` request, this means that an object with the same fields has already been created and the database cannot contain duplicates
 - For the `DELETE` request, this means that an object with the given `_id` has already been deleted, and so an item that doesn't exist in the database cannot be deleted
 
-I have provided extra sample data and _id's for these two requests to succeed if you wish to run the test's again.
+I have provided extra sample data and _id's for these two requests to succeed if you wish to run the test's again. (if you wish to run multiple tests, the fields can be changed from this data)
+
+`Data for POST request`
+```
+{
+  "name": "Canada Goose Jacket",
+  "category": "clothes",
+  "price": "1000.99",
+  "quantity": "5",
+  "url": "https://www.canadagoose.com/ca/en/macmillan-parka-801688475735.html"
+}
+```
+`_id for DELETE request`
+```
+61e3a3053cfb29aaa73e7eab
+61e64c1e56a84879f3847f98
+```
 
 The tests can be found in `/inventory-shopify/test/api.test.js`
 - In order to run these tests you must run the command `npm run test`
