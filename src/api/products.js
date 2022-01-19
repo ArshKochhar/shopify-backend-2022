@@ -4,7 +4,7 @@ const monk = require('monk');
 const Json2csvParser = require('json2csv').Parser;
 const fs = require('fs');
 
-const schema = require('./model');
+const schema = require('../model/model');
 
 const db = monk(process.env.MONGO_URI);
 const inventory = db.get('inventory');
