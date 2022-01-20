@@ -20,10 +20,6 @@ Once you have cloned the repository, and ran the commands above - to recap:
 npm install
 ```
 
-Before you start the API, please make sure to do the following, follow the instruction to uncomment the code on `line 29` from `/inventory-shopify/test/api.test.js` file: 
-
-<img width="651" alt="Screen Shot 2022-01-18 at 3 32 38 PM" src="https://user-images.githubusercontent.com/51424592/150014114-606bf606-1bda-4b62-96e4-7c81e789bad1.png">
-
 Now run the following command:
 ```
 npm run dev
@@ -74,7 +70,7 @@ I have provided extra sample data and _id's for these two requests to succeed if
 `Data for POST request`
 ```
 {
-  "name": "Canada Goose Jacket",
+  "name": "Off White Fanny Pack",
   "category": "clothes",
   "price": "1000.99",
   "quantity": "5",
@@ -86,6 +82,12 @@ I have provided extra sample data and _id's for these two requests to succeed if
 61e3a3053cfb29aaa73e7eab
 61e64c1e56a84879f3847f98
 ```
+
+# Future Considerations
+
+- The most important consideration is to have authentication built in for the API so it is restricted to the users that are supposed to have access
+- Also for future tests, have a seed and tear down method so that tests are able to pass repetedly. For this we will need a test or in-memory database
+- As the Application gets more complex, follow the MVC principles
 
 ## Includes API Server utilities:
 
