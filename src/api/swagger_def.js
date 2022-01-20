@@ -15,15 +15,15 @@ const swaggerDefinition = {
     },
   },
   servers: [
-    {
-      url: 'https://shopify-crud-backend-2022.herokuapp.com',
-      name: 'Production Server',
-    },
-    // UNCOMMENT BELOW WHEN RUNNING LOCALLY, and comment above simultaneously.
     // {
-    //   url: 'http://localhost:5000',
-    //   name: 'LocalHost server',
+    //   url: 'https://shopify-crud-backend-2022.herokuapp.com',
+    //   name: 'Production Server',
     // },
+    // UNCOMMENT BELOW WHEN RUNNING LOCALLY, and comment above simultaneously.
+    {
+      url: 'http://localhost:5000',
+      name: 'LocalHost server',
+    },
   ],
 };
 
