@@ -108,9 +108,9 @@ describe('GET /api/v1/inventory/export/:id', () => {
 // // POST request to add a NEW item to the inventory
 describe('POST /api/v1/inventory/', () => {
   const data = {
-    name: 'Burberry Pants', // Change name if you want to test again or you will receive a 500
+    name: 'Burberry Scarf', // Change name if you want to test again or you will receive a 500
     category: 'clothes',
-    price: '900',
+    price: '800',
     quantity: '5'
   };
   it('respond with 200, new item created', (done) => {
@@ -250,7 +250,7 @@ describe('DELETE /api/v1/inventory/:id', () => {
 describe('DELETE /api/v1/inventory/:id', () => {
   it('respond with 200, Deletes existing item from the database', (done) => {
     request(app)
-      .delete('/api/v1/inventory/61e7a37d39ebd32349a4558f')
+      .delete('/api/v1/inventory/61e8b30832180f44318d571e')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)

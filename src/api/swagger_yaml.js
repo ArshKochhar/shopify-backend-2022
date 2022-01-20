@@ -281,7 +281,7 @@
  *       - in: path
  *         name: _id
  *         required: true
- *         example: 61e7a0937983da208cda397f
+ *         example: 61e7a30e20f5b922bbb1dd9a
  *         description: Numeric ID of the product to delete
  *         schema:
  *           type: string
